@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folio Book websit </title>
+    <title>TuniServices site </title>
     <link rel="stylesheet" href="style.css">
+    <!--linking font awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 <body>
+    <!--header /navbar-->
     <header>
-        <nav class="navbar">
+        <nav class="navbar section-content">
             <a href="#" class="navbar-logo">
-                <h2 class="logo-text">FolioBook</h2>
+                <h2 class="logo-text">TuniServices </h2>
             </a>
-        </nav>
         <ul class="nav-menu">
+            <button id="menu-close-button" class="fas fa-times">
+
+            </button>
             <li class="nav-item">
                 <a href="#" class="nav-link">Home</a>
 
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">About Us
+
+                </a>
 
             </li>
             <li class="nav-item">
@@ -39,7 +47,149 @@
 
             </li>
         </ul>
+        <button id="menu-open-button" class="fas fa-bars"></button>
+                
+       
+    </nav>
+
     </header>
+    <main>
+        <!--hero section -->
+        <section class="hero-section">
+            <div class="section-content">
+                <div class="hero-details">
+                    <h2 class="title">
+                        Smart Digital Solutions for Your Business
+                    </h2>
+                    <h3 class="subtitle">
+                        Web development, design, marketing & more.
+                    </h3>
+                    <p class="description">
+                        We help you grow your business with modern, tailored digital services. From booking systems to full-scale web platforms, we’ve got you covered.
+
+                    </p>
+                    <div class="buttons">
+                        <a href="#" class="button Get-Started">Get Started </a>
+                        <a href="#" class="button contact-us">Contact Us </a>
+
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/develloper photo.png"
+                    alt="hero" class="hero-image slideshow-image">
+                    <img src="assets/images/dev photo.png"
+                    alt="hero" class="hero-image slideshow-image">
+
+                    <img src="assets/images/dev photo 2.png"
+                     alt="hero" class="hero-image slideshow-image">
+                </div>
+                
+            </div>
+        </section>
+        <div class="spacer">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+
+        <!--About section -->
+        <section class="about-section">
+            <div class="section-content">
+                <div class="about-image-wrapper">
+                    <img src="assets/images/images des developpeur.jpg"
+                    alt="about" class="about-image">
+
+
+                </div>
+                <div class="about-details">
+                    <h2 class="section-title">About Us </h2>
+                    <p class="text">
+                        TuniServices is a Tunisian digital company that offers web development, graphic design, and digital marketing solutions. Our mission is to help businesses succeed with smart and modern tools. Our creative team is here to turn your ideas into professional and effective digital products.
+
+                    </p>
+                    <div class="social-link-list">
+                        <a href="#" class="social-link">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- Wave divider top -->
+         <div class="spacer spacer-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+       <!-- Services Section -->
+<section class="services-section">
+    <h2 class="section-title">Our Services</h2>
+    <div class="section-content">
+      <ul class="service-list">
+        
+        <li class="service-item">
+          <img src="assets/images/hacking.png"
+           alt="Cybersecurity" class="service-image" />
+          <div class="service-details">
+            <h3 class="name">Cybersecurity</h3>
+            <p class="text">Protect your systems with advanced threat detection, secure networks, and data encryption.</p>
+          </div>
+        </li>
+  
+        <li class="service-item">
+          <img src="assets/images/web.png"
+           alt="Web Development" class="service-image" />
+          <div class="service-details">
+            <h3 class="name">Web Development</h3>
+            <p class="text">Create modern, responsive websites tailored to your business needs.</p>
+          </div>
+        </li>
+  
+        <li class="service-item">
+          <img src="assets/images/security.png"
+           alt="Mobile App Development" class="service-image" />
+          <div class="service-details">
+            <h3 class="name">Mobile Apps</h3>
+            <p class="text">Design and build mobile applications for iOS and Android with smooth UX.</p>
+          </div>
+        </li>
+  
+        <li class="service-item">
+          <img src="assets/images/developper photo 2.png" alt="Cloud Solutions" class="service-image" />
+          <div class="service-details">
+            <h3 class="name">Cloud Solutions</h3>
+            <p class="text">Deploy scalable and reliable cloud services for your infrastructure.</p>
+          </div>
+        </li>
+  
+        <li class="service-item">
+          <img src="assets/images/analyse.png"
+          alt="SEO & Analytics" class="service-image" />
+          <div class="service-details">
+            <h3 class="name">SEO & Analytics</h3>
+            <p class="text">Improve your visibility on search engines and analyze traffic efficiently.</p>
+          </div>
+        </li>
+  
+        
+  
+      </ul>
+    </div>
+  </section>
+  
+          
+        
+
+    </main>
+    <script src="script.js"></script>
     
 </body>
 </html>
