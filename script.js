@@ -216,3 +216,92 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', animateTechCards);
     animateTechCards(); // Check on load
 });
+
+// Show fade-in when section appears in viewport
+const faders = document.querySelectorAll('.fade-in-section');
+
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+// Platform Section Animation
+function animatePlatformSection() {
+    const platformSection = document.querySelector('.platform-section');
+    if (!platformSection) return;
+    
+    // Reset initial state for animation
+    const features = document.querySelectorAll('.feature-item');
+    const platformVisual = document.querySelector('.platform-visual');
+    
+    features.forEach(feature => {
+        feature.style.transform = 'translateX(-20px)';
+        feature.style.opacity = '0';
+        feature.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+    });
+    
+    if (platformVisual) {
+        platformVisual.style.opacity = '0';
+        platformVisual.style.transform = 'translateX(20px)';
+        platformVisual.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+    }
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate features one by one
+                features.forEach((feature, index) => {
+                    setTimeout(() => {
+                        feature.style.transform = 'translateX(0)';
+                        feature.style.opacity = '1';
+                    }, index * 150);
+                });
+                
+                // Animate platform visual
+                if (platformVisual) {
+                    setTimeout(() => {
+                        platformVisual.style.transform = 'translateX(0)';
+                        platformVisual.style.opacity = '1';
+                    }, features.length * 150);
+                }
+                
+                // Animate particles
+                const particles = document.querySelectorAll('.platform-particle');
+                particles.forEach(particle => {
+                    particle.style.animationPlayState = 'running';
+                });
+                
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    observer.observe(platformSection);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    animatePlatformSection();
+    
+    // Add hover effect for platform visual
+    const platformVisual = document.querySelector('.platform-visual');
+    if (platformVisual) {
+        platformVisual.addEventListener('mouseenter', () => {
+            platformVisual.classList.add('hover');
+        });
+        
+        platformVisual.addEventListener('mouseleave', () => {
+            platformVisual.classList.remove('hover');
+        });
+    }
+});
