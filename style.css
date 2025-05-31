@@ -176,7 +176,10 @@
         .navbar :where(#menu-close-button, #menu-open-button) {
             display: none;
         }
-
+#menu-open-button,
+#menu-close-button {
+    display: none;
+}
         /* Hero section */
         .hero-section {
             min-height: 100vh;
@@ -1452,6 +1455,7 @@
     header.scrolled .navbar #menu-close-button {
         top: 15px;
     }
+   
 
     /* Hero Section Adjustments */
     .hero-section .section-content {
