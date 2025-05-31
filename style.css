@@ -849,176 +849,246 @@
             }
         }
 
-        /* responsive media query code pour max width 900px */
-        @media screen and (max-width: 900px) {
-            /* ajuster les fonts sizes pour les small screens */
-            :root {
-                --font-size-m: 1rem;
-                --font-size-l: 1.3rem;
-                --font-size-xl: 1.5rem;
-                --font-size-xxl: 1.8rem;
-            }
+ /* responsive media query code pour max width 900px */
+@media screen and (max-width: 900px) {
+    /* ajuster les fonts sizes pour les small screens */
+    :root {
+        --font-size-m: 1rem;
+        --font-size-l: 1.3rem;
+        --font-size-xl: 1.5rem;
+        --font-size-xxl: 1.8rem;
+    }
 
-            body.show-mobile-menu header::before {
-                content: "";
-                position: fixed;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 100%;
-                backdrop-filter: blur(5px);
-                background: rgba(0, 0, 0, 0.2);
-            }
+    /* Mobile Menu Styles - Version Corrigée */
+    .navbar {
+        position: relative;
+    }
 
-            .navbar :where(#menu-close-button, #menu-open-button) {
-                display: block;
-                font-size: var(--font-size-l);
-            }
+    .navbar :where(#menu-close-button, #menu-open-button) {
+        display: block;
+        font-size: var(--font-size-xl);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
 
-            .navbar #menu-close-button {
-                position: absolute;
-                right: 30px;
-                top: 30px;
-                color: var(--dark-color);
-            }
+    .navbar #menu-open-button {
+        color: var(--white-color);
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+    }
 
-            .navbar #menu-open-button {
-                color: var(--white-color);
-            }
 
-            .navbar .nav-menu {
-                display: flex;
-                position: fixed;
-                left: -300px;
-                top: 0;
-                flex-direction: column;
-                align-items: center;
-                width: 300px;
-                height: 100%;
-                padding-top: 100px;
-                background: var(--white-color);
-                transition: left 0.3s ease;
-                z-index: 1000;
-            }
+    .navbar #menu-close-button {
+        color: var(--dark-color);
+        display: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: var(--font-size-xl);
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1002;
+        padding: 5px;
+    }
 
-            body.show-mobile-menu .navbar .nav-menu {
-                left: 0;
-            }
+    body.show-mobile-menu .navbar #menu-open-button {
+        display: none;
+    }
 
-            .navbar .nav-menu .nav-link {
-                color: var(--dark-color);
-                display: block;
-                margin-top: 17px;
-                font-size: var(--font-size-l);
-            }
+    body.show-mobile-menu .navbar #menu-close-button {
+        display: block;
+    }
 
-            .hero-section .section-content {
-                gap: 50px;
-                text-align: center;
-                padding: 100px 20px 50px;
-                flex-direction: column-reverse;
-                justify-content: center;
-            }
+    .navbar .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--white-color);
+        flex-direction: column;
+        padding: 25px; /* Padding réduit car le X est maintenant dans le menu */
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+    }
 
-            .hero-section .hero-details :is(.subtitle, .description),
-            .about-section .about-details {
-                max-width: 100%;
-            }
+    body.show-mobile-menu .navbar .nav-menu {
+        left: 0;
+    }
 
-            .hero-section .hero-details .buttons {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
+    .navbar .nav-menu .nav-item {
+        width: 100%;
+        margin: 8px 0;
+    }
 
-            .hero-section .hero-image-wrapper {
-                max-width: 300px;
-                margin: 0 auto;
-            }
+    .navbar .nav-menu .nav-link {
+        display: block;
+        color: var(--dark-color);
+        padding: 12px 20px;
+        font-size: var(--font-size-m);
+        border-radius: var(--border-radius-s);
+        transition: all 0.3s ease;
+        text-align: left;
+    }
 
-            .about-section .section-content {
-                gap: 70px;
-                flex-direction: column;
-                text-align: center;
-            }
+    .navbar .nav-menu .nav-link:hover {
+        background: var(--secondary-color);
+        color: var(--primary-color);
+        transform: translateX(10px);
+    }
 
-            .about-section .about-image-wrapper .about-image {
-                width: 100%;
-                height: 100%;
-                max-width: 250px;
-                aspect-ratio: 1;
-            }
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
 
-            .about-section .about-details .section-title {
-                text-align: center;
-            }
+    body.show-mobile-menu .mobile-menu-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
 
-            .about-section .about-details .text {
-                text-align: center;
-            }
+    /* Header scroll adjustment */
+    header.scrolled .navbar #menu-open-button {
+        top: 15px;
+    }
 
-            .about-section .social-link-list {
-                justify-content: center;
-            }
+    header.scrolled .navbar #menu-close-button {
+        top: 15px;
+    }
 
-            .service-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-item {
-                min-height: 350px;
-                padding: 30px 20px;
-            }
-            
-            .service-image {
-                width: 80px;
-                height: 80px;
-            }
-            .tech-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-            
-            .tech-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-          
-  
+    /* Hero Section Adjustments */
+    .hero-section .section-content {
+        gap: 50px;
+        text-align: center;
+        padding: 100px 20px 50px;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .hero-section .hero-details :is(.subtitle, .description),
+    .about-section .about-details {
+        max-width: 100%;
+    }
+
+    .hero-section .hero-details .buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-section .hero-image-wrapper {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* About Section Adjustments */
+    .about-section .section-content {
+        gap: 70px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-section .about-image-wrapper .about-image {
+        width: 100%;
+        height: 100%;
+        max-width: 250px;
+        aspect-ratio: 1;
+    }
+
+    .about-section .about-details .section-title {
+        text-align: center;
+    }
+
+    .about-section .about-details .text {
+        text-align: center;
+    }
+
+    .about-section .social-link-list {
+        justify-content: center;
+    }
+
+    /* Services Section Adjustments */
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-item {
+        min-height: 350px;
+        padding: 30px 20px;
+    }
+    
+    .service-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Tech Section Adjustments */
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .tech-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
+@media screen and (max-width: 480px) {
+    .navbar :where(#menu-close-button, #menu-open-button) {
+        right: 15px;
+        top: 15px;
+    }
+    
+    .hero-section .hero-details .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
 
+    .hero-section .hero-details .button {
+        width: 100%;
+        text-align: center;
+    }
 
-        @media screen and (max-width: 480px) {
-            .hero-section .hero-details .buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero-section .hero-details .button {
-                width: 100%;
-                text-align: center;
-            }
-
-            .about-section .about-image-wrapper::before {
-                display: none;
-            }
-            .tech-card {
-                padding: 30px 20px;
-            }
-            
-            .tech-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 2rem;
-            }
-            
-            .tech-card h3 {
-                font-size: 1.3rem;
-            }
-            
-            .tech-card p {
-                font-size: 0.9rem;
-            }
-           
-        }
-  
+    .about-section .about-image-wrapper::before {
+        display: none;
+    }
+    
+    .tech-card {
+        padding: 30px 20px;
+    }
+    
+    .tech-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+    
+    .tech-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .tech-card p {
+        font-size: 0.9rem;
+    }
+}
