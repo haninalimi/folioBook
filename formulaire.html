@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuniServices - Booking</title>
+        <link rel="stylesheet" href="formulaire.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1>Book Your Service</h1>
+            <p>Schedule an appointment with our experts and take your business to the next level with our premium services.</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        
+        <div class="booking-steps">
+            <div class="step active" id="step1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Service Selection</div>
+            </div>
+            <div class="step" id="step2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Date & Time</div>
+            </div>
+            <div class="step" id="step3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Your Details</div>
+            </div>
+            <div class="step" id="step4">
+                <div class="step-circle">4</div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+        
+        <form id="bookingForm">
+            <!-- Service Selection -->
+            <div class="booking-form-container form-section active" id="section1">
+                <h2 class="section-title">Choose Your Service</h2>
+                <p class="section-description">Select the service that best fits your needs from our premium offerings.</p>
+                
+                <div class="service-cards">
+                    <div class="service-card" data-service="web-development">
+                        <h3>Web Development</h3>
+                        <p>Custom website development tailored to your business needs.</p>
+                        <div class="service-price">$999+</div>
+                        <ul class="service-features">
+                            <li>Responsive Design</li>
+                            <li>SEO Optimized</li>
+                            <li>CMS Integration</li>
+                            <li>1 Year Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card" data-service="mobile-app">
+                        <h3>Mobile App Development</h3>
+                        <p>Build cross-platform mobile applications for iOS and Android.</p>
+                        <div class="service-price">$1,499+</div>
+                        <ul class="service-features">
+                            <li>iOS & Android</li>
+                            <li>User Analytics</li>
+                            <li>Push Notifications</li>
+                            <li>6 Months Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card" data-service="seo">
+                        <h3>SEO Optimization</h3>
+                        <p>Improve your search engine rankings and online visibility.</p>
+                        <div class="service-price">$499/mo</div>
+                        <ul class="service-features">
+                            <li>Keyword Research</li>
+                            <li>On-Page SEO</li>
+                            <li>Technical SEO Audit</li>
+                            <li>Monthly Reports</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service-notes">Additional Requirements</label>
+                    <textarea id="service-notes" class="form-control form-textarea" placeholder="Please describe any specific requirements you have for the service..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" disabled>Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextToStep2">Next: Choose Date</button>
+                </div>
+            </div>
+            
+            <!-- Date & Time Selection -->
+            <div class="booking-form-container form-section" id="section2">
+                <h2 class="section-title">Select Date & Time</h2>
+                <p class="section-description">Choose a convenient time for your consultation or service.</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <div class="calendar-title">June 2023</div>
+                        <div class="calendar-nav">
+                            <button type="button" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                            <button type="button" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid" id="calendarDaysHeader">
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                    </div>
+                    
+                    <div class="calendar-grid" id="calendarDays">
+                        <!-- Calendar days will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <h3 class="time-slots-title">Available Time Slots</h3>
+                <div class="time-slots" id="timeSlots">
+                    <div class="time-slot">09:00 AM</div>
+                    <div class="time-slot">10:00 AM</div>
+                    <div class="time-slot">11:00 AM</div>
+                    <div class="time-slot">12:00 PM</div>
+                    <div class="time-slot">02:00 PM</div>
+                    <div class="time-slot">03:00 PM</div>
+                    <div class="time-slot">04:00 PM</div>
+                    <div class="time-slot disabled">05:00 PM</div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="backToStep1">Previous: Service</button>
+                    <button type="button" class="btn btn-primary" id="nextToStep3">Next: Your Details</button>
+                </div>
+            </div>
+            
+            <!-- Personal Details -->
+            <div class="booking-form-container form-section" id="section3">
+                <h2 class="section-title">Your Information</h2>
+                <p class="section-description">Please provide your details so we can prepare for your appointment.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company Name (Optional)</label>
+                    <input type="text" id="company" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <textarea id="notes" class="form-control form-textarea" placeholder="Any additional information we should know about your project..."></textarea>
+                </div>
+                
+                <div class="summary-card">
+                    <h3>Booking Summary</h3>
+                    
+                    <div class="summary-item">
+                        <span class="summary-label">Service:</span>
+                        <span class="summary-value" id="summary-service">Web Development</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span class="summary-label">Date:</span>
+                        <span class="summary-value" id="summary-date">June 15, 2023</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span class="summary-label">Time:</span>
+                        <span class="summary-value" id="summary-time">10:00 AM</span>
+                    </div>
+                    
+                    <div class="summary-item summary-total">
+                        <span class="summary-label">Total:</span>
+                        <span class="summary-value" id="summary-total">$999</span>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="backToStep2">Previous: Date & Time</button>
+                    <button type="submit" class="btn btn-primary pulse">Confirm Booking</button>
+                </div>
+            </div>
+            
+            <!-- Confirmation -->
+            <div class="booking-form-container form-section" id="section4">
+                <div class="confirmation-container">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    
+                    <h2 class="confirmation-title">Booking Confirmed!</h2>
+                    <p class="confirmation-subtitle">Thank you for booking with TuniServices. We've sent a confirmation email with all the details. Our team will contact you shortly to discuss your project.</p>
+                    
+                    <div class="confirmation-details">
+                        <div class="confirmation-item">
+                            <div class="confirmation-label">Booking Reference:</div>
+                            <div class="confirmation-value">TNS-2023-06-001</div>
+                        </div>
+                        
+                        <div class="confirmation-item">
+                            <div class="confirmation-label">Service:</div>
+                            <div class="confirmation-value" id="confirm-service">Web Development</div>
+                        </div>
+                        
+                        <div class="confirmation-item">
+                            <div class="confirmation-label">Date & Time:</div>
+                            <div class="confirmation-value" id="confirm-datetime">June 15, 2023 at 10:00 AM</div>
+                        </div>
+                        
+                        <div class="confirmation-item">
+                            <div class="confirmation-label">Client:</div>
+                            <div class="confirmation-value" id="confirm-client">John Doe</div>
+                        </div>
+                        
+                        <div class="confirmation-item">
+                            <div class="confirmation-label">Email:</div>
+                            <div class="confirmation-value" id="confirm-email">john.doe@example.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="confirmation-actions">
+                        <button type="button" class="btn btn-secondary" id="newBooking">
+                            <i class="fas fa-calendar-plus"></i> New Booking
+                        </button>
+                        <button type="button" class="btn btn-primary" id="downloadICS">
+                            <i class="fas fa-calendar-alt"></i> Add to Calendar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+       src="formulaire.js"
+    </script>
+</body>
+</html>
