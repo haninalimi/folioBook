@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
             // Step navigation
             const nextToStep2 = document.getElementById('nextToStep2');
             const nextToStep3 = document.getElementById('nextToStep3');
